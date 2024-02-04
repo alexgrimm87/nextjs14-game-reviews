@@ -3,10 +3,12 @@ import {getReview, getSlugs} from "@/lib/reviews";
 import Heading from "@/components/Heading";
 import ShareLinkButton from "@/components/ShareLinkButton";
 
-export async function generateStaticParams() {
-  const slugs = await getSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+export const dynamic = 'force-dynamic';
+
+// export async function generateStaticParams() {
+//   const slugs = await getSlugs();
+//   return slugs.map((slug) => ({ slug }));
+// }
 
 export async function generateMetadata({ params: { slug } }) {
   const review = await getReview(slug);
