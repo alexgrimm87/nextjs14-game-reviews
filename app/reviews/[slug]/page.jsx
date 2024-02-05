@@ -4,12 +4,10 @@ import Heading from "@/components/Heading";
 import ShareLinkButton from "@/components/ShareLinkButton";
 import {notFound} from "next/navigation";
 
-export const dynamic = 'force-dynamic';
-
-// export async function generateStaticParams() {
-//   const slugs = await getSlugs();
-//   return slugs.map((slug) => ({ slug }));
-// }
+export async function generateStaticParams() {
+  const slugs = await getSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params: { slug } }) {
   const review = await getReview(slug);
